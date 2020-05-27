@@ -1,0 +1,15 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/kaousheik/workspace.git",
+  "author": "<kaousheik@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "./server"
+  ],
+  "scripts": {
+    "dev:server": "yarn workspace server dev"
+  }
+}

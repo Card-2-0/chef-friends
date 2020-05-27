@@ -1,0 +1,93 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url = "***"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id       String  @default(cuid()) @id
+  name     String
+  email    String  @unique
+  password String
+  boards   Board[] @relation("BoardMembers")
+  teams    Team[]  @relation("TeamMembers")
+}
+
+model Board {
+  id          String    @default(cuid()) @id
+  title       String
+  description String
+  createdAt   DateTime  @default(now())
+  type        BoardType @default(PRIVATE)
+  team        Team?     @relation("TeamBoards", fields: [teamId], references: [id])
+  teamId      String?
+  members     User[]    @relation("BoardMembers")
+  lists       List[]
+  updatedBy   User      @relation("BoardUpdatedBy", fields: [updatedById], references: [id])
+  updatedById String
+}
+
+model Team {
+  id          String   @default(cuid()) @id
+  members     User[]   @relation("TeamMembers")
+  name        String
+  updatedBy   User     @relation("TeamUpdatedBy", fields: [updatedById], references: [id])
+  updatedById String
+  boards      Board[]  @relation("TeamBoards")
+  createdAt   DateTime @default(now())
+}
+
+model List {
+  id          String       @default(cuid()) @id
+  title       String
+  priority    ListPriority @default(LOW)
+  cards       Card[]       @relation("CardLists")
+  updatedBy   User         @relation("ListUpdatedBy", fields: [updatedById], references: [id])
+  updatedById String
+}
+
+model Card {
+  id          String       @default(cuid()) @id
+  title       String
+  description String
+  List        List         @relation("CardLists", references: [id], fields: [listId])
+  listId      String
+  priority    CardPriority @default(LOW)
+  status      CardStatus   @default(PENDING)
+  updatedBy   User         @relation("CardUpdatedBy", fields: [updatedById], references: [id])
+  updatedById String
+}
+
+model Chat {
+  id          String @default(cuid()) @id
+  title       String
+  description String
+}
+
+enum BoardType {
+  PRIVATE
+  PUBLIC
+  TEAM
+}
+
+enum ListPriority {
+  LOW
+  HIGH
+}
+
+enum CardPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum CardStatus {
+  PENDING
+  COMPLETED
+}
