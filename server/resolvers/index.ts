@@ -1,3 +1,3 @@
-import BoardResolver from "./Board";
 import UserResolver from "./User";
-export const resolvers = [...BoardResolver, ...UserResolver];
+import Fetch from './Fetch'
+export const resolvers = [...UserResolver, Fetch];

@@ -14,6 +14,6 @@ export class Login {
 
     const valid = await bcrypt.compare(password, user.password);
     if (!valid) return null;
-    return jwt.sign({ id: user.id }, process.env.JWT_SECRET!);
+    return jwt.sign({ id: user.id }, 'secret');
   }
 }
