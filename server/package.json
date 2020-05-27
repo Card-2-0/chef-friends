@@ -4,7 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --respawn ./index.ts"
+    "dev": "ts-node-dev --respawn ./index.ts",
+    "gen": "npx prisma generate",
+    "migrate": "npx prisma migrate save --name init --experimental",
+    "up": "npx prisma migrate up --experimental"
   },
   "devDependencies": {
     "@prisma/cli": "^2.0.0-beta.6",

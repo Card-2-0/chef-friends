@@ -7,9 +7,14 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "./server"
+    "./server",
+    "./web"
   ],
   "scripts": {
-    "dev:server": "yarn workspace server dev"
+    "dev:server": "yarn workspace server dev",
+    "gen:server": "yarn workspace server gen",
+    "db:migrate": "yarn workspace server migrate",
+    "db:up": "yarn workspace server up",
+    "web:dev": "yarn workspace web start"
   }
 }
