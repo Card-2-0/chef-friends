@@ -4,6 +4,7 @@ import { ObjectType, Field, ID } from "type-graphql";
 export class User {
   @Field(() => ID) id: string;
   @Field() name: string;
-  @Field() email: string;
+  @Field() userId: string;
   @Field() rating: string;
+  @Field(() => [User]) friends: User[];
 }
