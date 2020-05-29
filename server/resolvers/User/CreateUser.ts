@@ -22,12 +22,15 @@ export class CreateUser {
         userid
       },
     });
-    await prisma.chef.create({
-      data : {
-        userid,
-        rating
-      }
-    })
+    const exchef = await prisma.chef.findMany({where:{userid}})
+    if(exchef.length === 0){
+      await prisma.chef.create({
+        data : {
+          userid,
+          rating
+        }
+      })
+    }
     let token = "";
     if (!!user) {
       token = jwt.sign({ id: user.id }, 'secret');
