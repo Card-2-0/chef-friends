@@ -1,14 +1,7 @@
 import { Resolver, Mutation, Arg } from "type-graphql";
 import { AddChefInput } from "../../inputs/Chef/AddChefInput"
 import { prisma } from "../../prisma";
-import axios from "axios";
-import cheerio from "cheerio";
-
-let siteUrl = "";
-const fetchData = async () => {
-  const result = await axios.get(siteUrl);
-  return cheerio.load(result.data);
-};
+import fetch from "../../utils/fetchingData"
 
 @Resolver()
 export class AddChef {
@@ -23,10 +16,9 @@ export class AddChef {
         data : {
           friendof: {
             connect : {id : useradding}
-          }
         }
       }
-    )
+    })
     await prisma.user.update({
       where:{id:useradding},
       data:{
@@ -37,15 +29,9 @@ export class AddChef {
     })
     return "Done";
     }
-
-    siteUrl = ("https://www.codechef.com/users/"+userid)
-    const $ = await fetchData();
-    const currating = await $('.rating-number').text();
-    if(currating.length == 0) return "User does not exist"; 
-    console.log(parseInt((currating.substring(0,4))))
-    const higrating = $('.rating-header').text();
-    console.log(higrating.split('\n')[6].trim());
-    const rating =  currating.substring(0,4)+' '+(higrating.split('\n')[6].trim());
+    
+    const rating = await fetch(userid);
+    if(rating === null) return "User does not exist";
     const chefcr = await prisma.chef.create({
       data:{
         userid,
