@@ -6,6 +6,6 @@ import { User } from "../../models/User";
 export class GetUsers {
   @Query(() => [User])
   async getUsers() {
-    return await prisma.user.findMany();
+    return await prisma.user.findMany({include:{friends:true}});
   }
 }

@@ -5,5 +5,5 @@ export class CreateUserInput {
   @Field() name: string;
   @Field() email: string;
   @Field() password: string;
-  @Field() rating: string;
+  @Field() userid: string;
 }

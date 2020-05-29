@@ -11,7 +11,7 @@ export class Login {
   async login(@Arg("data") { email, password }: LoginInput) {
     const user = await prisma.user.findOne({ where: { email } });
     if (!user) return null;
-
+    
     const valid = await bcrypt.compare(password, user.password);
     if (!valid) return null;
     return jwt.sign({ id: user.id }, 'secret');
