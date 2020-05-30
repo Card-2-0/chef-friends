@@ -1,0 +1,5 @@
+mutation UpdateChef ($userid:String!) {
+    updateChef (
+            userid:$userid
+    )
+}

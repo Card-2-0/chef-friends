@@ -1,14 +1,10 @@
 import React from "react"
 import { useCreateUserMutation } from "../generated"
+import { Link } from "react-router-dom"
 
 export const Register = () => {
     const ivalue = (id:string) => (document.getElementById(id) as HTMLInputElement).value
     const [createUserMutation, {data,error}] = useCreateUserMutation() 
-
-    // const validateEmail = (email:string) => {
-    //     const re = /^(([^<>()[].,;:\s@"]+(.[^<>()[].,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z\-0-9]+.)+[a-zA-Z]{2,}))$/;
-    //     return re.test(email);
-    // }
     
     const submit = async () => {
         const name = ivalue('name')
@@ -16,7 +12,6 @@ export const Register = () => {
         const userid = ivalue('userid')
         const pw1 = ivalue('pw1')
         const pw2 = ivalue('pw2')
-        // if(!validateEmail(email)) {alert("Enter valid email"); return;}
         if(pw1 !== pw2) {alert("Passwords dont match"); return;}
 
         await createUserMutation({
@@ -27,13 +22,6 @@ export const Register = () => {
                 password:pw1
             }
         })
-        // if(data?.createUser === "1") {
-        //     alert("Given codechef ID does not exist, please check")
-        //     return;
-        // }
-        // else{
-        // localStorage.setItem("chef", data!.createUser!)
-        // window.location.pathname = 'user'}
     }
     console.log(error)
     console.log(data)
@@ -42,7 +30,7 @@ export const Register = () => {
             alert("Given codechef ID does not exist, please check")
         }
         else{
-            localStorage.setItem("chef", data!.createUser!)
+            localStorage.setItem("chef", data.createUser)
             window.location.pathname = 'user'
         }
     }
@@ -58,6 +46,8 @@ export const Register = () => {
             <input id='pw1' placeholder="Enter password"></input>
             <input id='pw2' placeholder="Re-enter password"></input>
             <button onClick={submit}> Submit </button>
+            <h5>Or Login</h5>
+            <Link to="login">HERE</Link>
         </div>
     )
 }

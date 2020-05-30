@@ -3,6 +3,7 @@ import {
   useLoginMutation,
   refetchMeQuery
 } from "../generated";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   let message = "";
@@ -37,6 +38,8 @@ export const Login = () => {
       <input id='password' placeholder='Password here'></input>
       <p>Click to continue</p>
       <button onClick={loginfun}> LOGIN </button>
+      <h5>Or Register</h5>
+      <Link to="reg">HERE</Link>
     </div>
   );
 };

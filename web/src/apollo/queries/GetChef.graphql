@@ -1,0 +1,6 @@
+query GetChef ($userid:String!) {
+    getChef (userid:$userid) {
+        userid
+        rating
+    }
+}

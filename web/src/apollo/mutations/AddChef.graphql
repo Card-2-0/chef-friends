@@ -1,0 +1,8 @@
+mutation AddChef ($useradding:String!, $userid:String!) {
+    addChef (
+        data : {
+            useradding:$useradding
+            userid:$userid
+        }
+    )
+}

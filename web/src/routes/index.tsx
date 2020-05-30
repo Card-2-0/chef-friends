@@ -16,7 +16,7 @@ export const AppRoutes = () => {
     <UserContext.Provider value={{user:data.me}}>
       <BrowserRouter>
         <div>
-          <Route path='/' component={Login} exact={true} />
+          <Route path='/login' component={Login} exact={true} />
           <Route path='/user' component={Dash} exact={true} />
           <Route path='/reg' component={Register} exact={true} />
         </div>
@@ -26,6 +26,6 @@ export const AppRoutes = () => {
   );
   else
   return (
-    <p>Couldnt fetch</p>
+    <p></p>
   )
 };

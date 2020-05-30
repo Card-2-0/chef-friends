@@ -1,0 +1,8 @@
+mutation RemoveChef ($userremove:String!, $userid:String!) {
+    removeChef (
+        data : {
+            userremove:$userremove
+            userid:$userid
+        }
+    )
+}
