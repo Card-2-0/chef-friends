@@ -7,13 +7,15 @@ import jwt from "jsonwebtoken";
 dotenv.config();
 @Resolver()
 export class Login {
-  @Mutation(() => String, { nullable: true })
+  @Mutation(() => String)
   async login(@Arg("data") { email, password }: LoginInput) {
     const user = await prisma.user.findOne({ where: { email } });
-    if (!user) return null;
+    if (!user) return "";
     
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return null;
-    return jwt.sign({ id: user.id }, 'secret');
+    if (!valid) return "";
+    let token = "";
+    if(!!user) token = jwt.sign({ id: user.id }, 'secret');
+    return token;
   }
 }

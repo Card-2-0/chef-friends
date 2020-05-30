@@ -1,37 +1,40 @@
 import React from "react"
-import { useGetUsersQuery, useCreateUserMutation } from "../generated"
+import { /*useCreateUserMutation,*/ useLoginMutation, useMeQuery } from "../generated"
 
 export const AppRoutes = () => {
 
-    const { data } = useGetUsersQuery();
-    const [createUserMutation, { data:datau,error }] = useCreateUserMutation()
-    if(data) console.log(data);
+    const {data, error} = useMeQuery();
+    const [loginMutation, {data:datal, error:errorl} ] = useLoginMutation() 
 
-    const fun = () => {
-        try{
-            createUserMutation({
-                variables:{
-                    name:"Sheik",
-                    email:"sheik@ram.com",
-                    password:"asdasd",
-                    userid:"kaousheik"
-                }
-            })
+    const loginfun = async () => {
+        
+        loginMutation({
+            variables:{
+                email:"sheik@ram.com",
+                password:"asdad"
+            }
+        })
+        if(datal) {
+            console.log(datal)
+            localStorage.setItem('chef', datal.login)
         }
-        catch{
-            console.log("Error")
+        if(errorl) console.log(errorl)
+
+    }
+
+    const mefun = () => {
+        if(data) {
+            console.log(data.me)
         }
+        if(error) console.log(error)
     }
-    if(datau) {
-        console.log(datau);
-        localStorage.setItem('chef', datau.createUser)
-    }
-    if(error) console.log(error);
+    
 
     return (
         <div>
-            <p> {data && data.getUsers[0].name } </p> 
-            <button onClick={fun}> Press me </button>
+            <button onClick={loginfun}> Press me </button>
+            <button onClick={mefun}> Dont Press me ></button>
+            <p>{ datal?.login } </p>
         </div>
     )
 }
