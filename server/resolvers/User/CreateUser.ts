@@ -15,7 +15,7 @@ export class CreateUser {
   ) {
     const hashed = await bcrypt.hashSync(password, 12);
     const rating = await fetch(userid);
-    if (rating === null) return "User does not Exist";
+    if (rating === null) return "1";
     const user = await prisma.user.create({
       data: {
         name,
@@ -33,10 +33,10 @@ export class CreateUser {
         },
       });
     }
-    let token = "";
-    if (!!user) {
-      token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!);
-    }
+    // let token = "";
+    // if (!!user) {
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!);
+    // }
     return token;
   }
 }
