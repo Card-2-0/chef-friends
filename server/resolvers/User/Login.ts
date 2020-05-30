@@ -11,11 +11,11 @@ export class Login {
   async login(@Arg("data") { email, password }: LoginInput) {
     const user = await prisma.user.findOne({ where: { email } });
     if (!user) return "";
-    
+
     const valid = await bcrypt.compare(password, user.password);
     if (!valid) return "";
     let token = "";
-    if(!!user) token = jwt.sign({ id: user.id }, 'secret');
+    if (!!user) token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!);
     return token;
   }
 }

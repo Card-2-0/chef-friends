@@ -22,5 +22,6 @@ export const getAuthUser = async ({ req, connection }: AuthParams) => {
       user = await prisma.user.findOne({ where: { id: decoded.id } });
     }
   }
+  console.log(user);
   return user;
 };

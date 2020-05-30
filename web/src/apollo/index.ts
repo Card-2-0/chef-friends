@@ -9,7 +9,7 @@ const wsLink = new WebSocketLink({
   options: {
     reconnect: true,
     connectionParams: {
-      Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      Authorization: `Bearer ${localStorage.getItem("chef")}`,
     },
   },
 });
@@ -17,8 +17,8 @@ const wsLink = new WebSocketLink({
 const httpLink = new HttpLink({
   uri: "http://localhost:8000",
   headers: {
-    authorization: localStorage.getItem("authToken")
-      ? `Bearer ${localStorage.getItem("authToken")}`
+    authorization: localStorage.getItem("chef")
+      ? `Bearer ${localStorage.getItem("chef")}`
       : undefined,
   },
 });
