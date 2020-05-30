@@ -1,39 +1,31 @@
 import React from "react";
-import {
-  /*useCreateUserMutation,*/ useLoginMutation,
-  useMeQuery,
-} from "../generated";
+import { BrowserRouter, Route } from "react-router-dom"
+import { Login } from "../components/Login";
+import { Dash } from "../components/Dash"
+import { UserContext } from "../utils/context"
+import { useMeQuery } from "../generated"
+import { Register } from "../components/Register";
 
 export const AppRoutes = () => {
-  const { data, error } = useMeQuery();
-  const [loginMutation, { data: datal, error: errorl }] = useLoginMutation();
 
-  const loginfun = async () => {
-    loginMutation({
-      variables: {
-        email: "kaousheik@gmail.com",
-        password: "11211212",
-      },
-    });
-
-    if (errorl) console.log(errorl);
-  };
-  if (datal && datal.login) {
-    console.log(datal);
-    localStorage.setItem("chef", datal.login);
-  }
-  const mefun = () => {
-    if (data) {
-      console.log(data.me);
-    }
-    if (error) console.log(error);
-  };
-
+  const { data } = useMeQuery();
+  console.log(data)
+  if(data)
   return (
     <div>
-      <button onClick={loginfun}> Press me </button>
-      <button onClick={mefun}> Dont Press me ></button>
-      <p>{datal?.login} </p>
+    <UserContext.Provider value={{user:data.me}}>
+      <BrowserRouter>
+        <div>
+          <Route path='/' component={Login} exact={true} />
+          <Route path='/user' component={Dash} exact={true} />
+          <Route path='/reg' component={Register} exact={true} />
+        </div>
+      </BrowserRouter>
+    </UserContext.Provider>
     </div>
   );
+  else
+  return (
+    <p>Couldnt fetch</p>
+  )
 };

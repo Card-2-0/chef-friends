@@ -135,6 +135,10 @@ export type MeQuery = (
   & { me?: Maybe<(
     { __typename?: 'User' }
     & Pick<User, 'id' | 'name' | 'userid'>
+    & { friends?: Maybe<Array<(
+      { __typename?: 'Chef' }
+      & Pick<Chef, 'userid' | 'rating'>
+    )>> }
   )> }
 );
 
@@ -246,6 +250,10 @@ export const MeDocument = gql`
     id
     name
     userid
+    friends {
+      userid
+      rating
+    }
   }
 }
     `;
