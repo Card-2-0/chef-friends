@@ -3,9 +3,11 @@
 import React from "react";
 
 interface IUserContext {
-    user? :any 
-  }
+  user?: any;
+  isAuthenticated: boolean;
+}
 
-export const UserContext = React.createContext<IUserContext>(
-    {user:null}
-)
+export const UserContext = React.createContext<IUserContext>({
+  user: null,
+  isAuthenticated: false,
+});
