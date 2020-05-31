@@ -33,9 +33,9 @@ export const Login = () => {
     <div>
       <p>{!datal?.login && message} </p>
       <h3>Enter Email</h3>
-      <input id="email" placeholder="Email here"></input>
+      <input id="email" type="email" placeholder="Email here"></input>
       <h3>Enter Password</h3>
-      <input id="password" placeholder="Password here"></input>
+      <input id="password" type="password" placeholder="Password here"></input>
       <p>Click to continue</p>
       <button onClick={loginfun} disabled={loading}>
         {" "}

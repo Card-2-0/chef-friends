@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMeQuery, useAddChefMutation } from "../generated";
 import { Chef } from "./Chef";
@@ -7,12 +7,12 @@ import { MyInfo } from "./MyInfo";
 export const Dash = () => {
   const { data } = useMeQuery();
   const [addChef, { data: dataa }] = useAddChefMutation();
-
+  const [id, setId] = useState<string>("");
   const AddChef = async () => {
     await addChef({
       variables: {
         useradding: data?.me?.id!,
-        userid: (document.getElementById("addid") as HTMLInputElement).value,
+        userid: id,
       },
     });
   };
@@ -44,8 +44,15 @@ export const Dash = () => {
             );
           })}
         <h2>Add New Friend</h2>
-        <input id="addid" placeholder="Enter CC ID here" />
-        <button onClick={AddChef}>Add Friend</button>
+        <input
+          name="id"
+          value={id}
+          onChange={(e) => setId(e.target.value)}
+          placeholder="Enter CC ID here"
+        />
+        <button onClick={AddChef} disabled={!id}>
+          Add Friend
+        </button>
         <button onClick={logout}> LOGOUT </button>
       </div>
     );
