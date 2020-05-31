@@ -6,7 +6,7 @@ import { MyInfo } from "./MyInfo";
 
 export const Dash = () => {
   const { data } = useMeQuery();
-  const [addChef, { data: dataa }] = useAddChefMutation();
+  const [addChef, { data: dataa,loading }] = useAddChefMutation();
   const [id, setId] = useState<string>("");
   const AddChef = async () => {
     await addChef({
@@ -18,7 +18,10 @@ export const Dash = () => {
   };
   if (dataa) {
     if (dataa.addChef === "Done") window.location.pathname = "user";
-    else alert("Codechef ID does not exist");
+    else if(dataa.addChef !== "Don") { 
+      alert("Codechef ID does not exist"); 
+      dataa.addChef = "Don"; 
+    } 
   }
 
   const logout = () => {
@@ -50,7 +53,7 @@ export const Dash = () => {
           onChange={(e) => setId(e.target.value)}
           placeholder="Enter CC ID here"
         />
-        <button onClick={AddChef} disabled={!id}>
+        <button onClick={AddChef} disabled={loading}>
           Add Friend
         </button>
         <button onClick={logout}> LOGOUT </button>
