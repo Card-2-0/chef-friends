@@ -1,7 +1,7 @@
 import React from "react";
 import { useLoginMutation, refetchMeQuery } from "../generated";
 import { Link } from "react-router-dom";
-
+// const emailRegex: RegExp = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 export const Login = () => {
   let message = "";
   const [
@@ -33,7 +33,12 @@ export const Login = () => {
     <div>
       <p>{!datal?.login && message} </p>
       <h3>Enter Email</h3>
-      <input id="email" type="email" placeholder="Email here"></input>
+      <input
+        id="email"
+        type="email"
+        pattern="[^ @]*@[^ @]*"
+        placeholder="Email here"
+      ></input>
       <h3>Enter Password</h3>
       <input id="password" type="password" placeholder="Password here"></input>
       <p>Click to continue</p>

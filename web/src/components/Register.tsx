@@ -47,10 +47,15 @@ export const Register = () => {
       <p> Please fill details to register yourself </p>
       <p> Given Username now can't be changed later </p>
       <input id="name" placeholder="Enter Name"></input>
-      <input id="email" placeholder="Enter Email"></input>
+      <input
+        id="email"
+        placeholder="Enter Email"
+        type="email"
+        pattern="[^ @]*@[^ @]*"
+      ></input>
       <input id="userid" placeholder="Enter Codechef ID"></input>
-      <input id="pw1" placeholder="Enter password"></input>
-      <input id="pw2" placeholder="Re-enter password"></input>
+      <input id="pw1" placeholder="Enter password" type="password"></input>
+      <input id="pw2" placeholder="Re-enter password" type="password"></input>
       <button onClick={submit} disabled={loading}>
         {" "}
         Submit{" "}
