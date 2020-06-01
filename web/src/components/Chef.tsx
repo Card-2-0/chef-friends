@@ -28,7 +28,9 @@ export const Chef = (props: any) => {
   return (
     <div>
       <h3>{props.userid}</h3>
-      <p>{props.rating}</p>
+      <p>Current Rating {props.rating.split(' ')[0]}</p>
+      <p>Highest Rating {props.rating.split(' ')[3].slice(0,-1)}</p>
+      <a href={"https://www.codechef.com/users/"+props.userid} target="_blank"> CC Page </a>
       <button onClick={upChef}> Refresh </button>
       <button onClick={remChef}>remove</button>
     </div>

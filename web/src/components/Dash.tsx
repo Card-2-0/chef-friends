@@ -34,6 +34,16 @@ export const Dash = () => {
       <div>
         <p>Hi {data?.me?.name} </p>
         <MyInfo user={data?.me?.userid} />
+        <h2>Add New Friend</h2>
+        <input
+          name="id"
+          value={id}
+          onChange={(e) => setId(e.target.value)}
+          placeholder="Enter CC ID here"
+        />
+        <button onClick={AddChef} disabled={loading}>
+          Add Friend
+        </button>
         <h2>My Friends</h2>
         {data?.me &&
           data?.me.friends?.map((item, i) => {
@@ -46,16 +56,7 @@ export const Dash = () => {
               />
             );
           })}
-        <h2>Add New Friend</h2>
-        <input
-          name="id"
-          value={id}
-          onChange={(e) => setId(e.target.value)}
-          placeholder="Enter CC ID here"
-        />
-        <button onClick={AddChef} disabled={loading}>
-          Add Friend
-        </button>
+        
         <button onClick={logout}> LOGOUT </button>
       </div>
     );

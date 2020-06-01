@@ -24,6 +24,7 @@ export const MyInfo = (props: any) => {
         <h2>My Info</h2>
         <p> My userid : {data.getChef.userid}</p>
         <p>{data.getChef.rating}</p>
+        <a href={"https://www.codechef.com/users/"+props.user} target="_blank"> My CC Page </a>
         <button onClick={upChef}>Update my Info</button>
       </div>
     );
