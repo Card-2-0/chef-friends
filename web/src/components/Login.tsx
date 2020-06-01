@@ -1,7 +1,10 @@
 import React from "react";
 import { useLoginMutation, refetchMeQuery } from "../generated";
+// import { Input, Form, Button, Typography } from "antd";
 import { Link } from "react-router-dom";
-// const emailRegex: RegExp = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+// const emailRegex = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+
+
 export const Login = () => {
   let message = "";
   const [
@@ -16,7 +19,6 @@ export const Login = () => {
           .value,
       },
     });
-    // console.log((document.getElementById("email") as HTMLInputElement).value)
     if (errorl) console.log(errorl);
   };
 

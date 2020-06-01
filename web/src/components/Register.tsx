@@ -1,6 +1,7 @@
 import React from "react";
 import { Input, Form, Button, Typography } from "antd";
 import { useCreateUserMutation } from "../generated";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 const emailRegex = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 
@@ -45,7 +46,7 @@ export const Register = () => {
       <Typography>
         {" "}
         Welcome to chef ChefBook
-        <Typography>PLease fill details to register</Typography>
+        <Typography>Please fill details to register</Typography>
         <Typography>Given username can't be changed</Typography>
       </Typography>
       <Form.Item
@@ -99,6 +100,7 @@ export const Register = () => {
           Submit
         </Button>
       </Form.Item>
+      <Link to='login'>or Login Here</Link>
     </Form>
   );
 };
