@@ -3,6 +3,7 @@
 import { ApolloClient, HttpLink, InMemoryCache, split } from "@apollo/client";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { WebSocketLink } from "@apollo/link-ws";
+import './../components/Mystyles.css'
 
 const wsLink = new WebSocketLink({
   uri: "ws://localhost:8000",

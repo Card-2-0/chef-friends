@@ -2,7 +2,7 @@ import React from "react";
 import { Input, Form, Button, Typography } from "antd";
 import { useCreateUserMutation } from "../generated";
 import { Link } from "react-router-dom";
-// import { Link } from "react-router-dom";
+// eslint-disable-next-line no-useless-escape
 const emailRegex = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 
 export const Register = () => {
