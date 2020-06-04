@@ -2,6 +2,16 @@
 import React from "react";
 import { useRemoveChefMutation, useUpdateChefMutation } from "../generated";
 
+const stars = (r:number) => {
+  if(r <= 1399) return("★")
+  else if(r <= 1599) return ("★★")
+  else if(r <= 1799) return ("★★★")
+  else if(r <= 1999) return ("★★★★")
+  else if(r <= 2199) return ("★★★★★")
+  else if(r <= 2499) return ("★★★★★★")
+  else return ("★★★★★★★")
+}
+
 export const Chef = (props: any) => {
   const [removeChef, { data }] = useRemoveChefMutation();
   const [updateChef, { data: datau }] = useUpdateChefMutation();
@@ -29,8 +39,8 @@ export const Chef = (props: any) => {
   return (
     <div className="dashboard-friend">
       <h1 style={{fontFamily:"Nexa-Bold", fontSize:"35px", color:"#ffffff"}}>{props.userid}</h1>
-      <h3 className="friend-rating">Current Rating {props.rating.split(' ')[0]}</h3>
-      <h3 className="friend-rating">Highest Rating {props.rating.split(' ')[3].slice(0,-1)}</h3>
+      <h3 className="friend-rating">Current Rating {props.rating.split(' ')[0]}   {stars(parseInt(props.rating.split(' ')[0]))}</h3>
+      <h3 className="friend-rating">Highest Rating {props.rating.split(' ')[3].slice(0,-1)}   {stars(parseInt(props.rating.split(' ')[3].slice(0,-1)))}</h3>
       <div style={{display:"flex", justifyContent:"space-between", marginTop: "30px"}}>
       <div>
       <a href={"https://www.codechef.com/users/"+props.userid} target="_blank"> <button style={{width:"125px",borderRadius:"20px", backgroundColor: "#1890ff", font: "Nexa-Bold", fontSize:"15px",color:"#ffffff", textAlign:"center", border:0, padding: "10px",}}>CC Page</button> </a>
