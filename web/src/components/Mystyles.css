@@ -106,3 +106,99 @@
 #reg{
     color: #ffffff;
 }
+
+.regform-page{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(45deg, #3091be, #13acb1);
+    /* background-color: #111111; */
+    min-height: 100vh;
+}
+
+.regform-container{
+    display: flex;
+    flex-direction: row;
+    width: 70vw;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 5px 7px 15px #111111;
+}
+
+.regform-left{
+    display: flex;
+    flex-direction: column;
+    flex: 0.3;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px;
+    background-color: #9fd9ff;
+    border-top-left-radius: 10px;    
+    border-bottom-left-radius: 10px;    
+
+}
+
+.regform-right{
+    display: flex;
+    flex-direction: column;
+    flex: 0.7;
+    padding: 50px;
+    background-color: #1b262c;
+    border-top-right-radius: 10px;    
+    border-bottom-right-radius: 10px;   
+}
+
+.regform-left-head{
+    font-family: Nexa-Bold;
+    font-size: 30px;
+}
+
+.regform-login{
+    border: 0;
+    border-radius: 25px;
+    font-family: Nexa-Bold;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #1b262c;
+    text-align: center;
+    width: 50%;
+    padding: 7px;
+    box-sizing: border-box;
+}
+
+.regform-right-head{
+    color: #1890ff;
+    margin-bottom: 10px;
+    font-size: 35px;
+    font-family: Nexa-Bold;
+}
+
+.regform-input{
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    padding: 10px;
+    padding-left: 18px;
+    border-radius: 7px;
+    margin-top: 3px;
+    /* width: 80%; */
+}
+
+.regform-input ::placeholder{
+    color: #666666;
+}
+
+.regform-submit{
+    background-color: #3091be;
+    color: #ffffff;
+    border: 0;
+    width: 100%;
+    font-family: Nexa-Bold;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, Form, Button, Typography } from "antd";
+import { Input, Form } from "antd";
 import { useCreateUserMutation } from "../generated";
 import { Link } from "react-router-dom";
 // eslint-disable-next-line no-useless-escape
@@ -7,6 +7,7 @@ const emailRegex = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\
 
 export const Register = () => {
   const [form] = Form.useForm();
+  const imgsource = require('./Logo/Codechef_book_logo.png')
   const [
     createUserMutation,
     { data, error, loading },
@@ -42,65 +43,81 @@ export const Register = () => {
   }
 
   return (
-    <Form form={form} onFinish={handleSubmit}>
-      <Typography>
-        {" "}
-        Welcome to chef ChefBook
-        <Typography>Please fill details to register</Typography>
-        <Typography>Given username can't be changed</Typography>
-      </Typography>
-      <Form.Item
-        name="name"
-        label="name"
-        required
-        rules={[
-          {
-            required: true,
-            message: "Name required",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        name="email"
-        label="email"
-        required
-        rules={[
-          {
-            required: true,
-            message: "Email required",
-          },
-          { pattern: emailRegex, message: "Enter Valid Email" },
-        ]}
-      >
-        <Input type="email" />
-      </Form.Item>
-      <Form.Item
-        name="codechefID"
-        label="codechef Id"
-        required
-        rules={[
-          {
-            required: true,
-            message: "Code chef id reqiured",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item name="password" label="password">
-        <Input.Password />
-      </Form.Item>
-      <Form.Item name="confirm-password" label="confirm password">
-        <Input.Password />
-      </Form.Item>
-      <Form.Item>
-        <Button type="primary" htmlType="submit" loading={loading}>
-          Submit
-        </Button>
-      </Form.Item>
-      <Link to='login'>or Login Here</Link>
-    </Form>
+    <div className="regform-page">
+      <div className="regform-container">
+      <div className="regform-left">
+      <img src={imgsource} width="150px" alt="Chefbook logo" />
+      <h1 className="regform-left-head">Welcome to <strong>CHEFBOOK</strong> </h1>
+      <button className="regform-login">
+      <Link to="login">LOGIN</Link>
+      </button>
+      </div>
+      <div className="regform-right">
+      <h1 className="regform-right-head">REGISTER</h1>
+      <h4 style={{color:"#ffffff"}}>Given username can't be changed</h4>
+      <Form form={form} onFinish={handleSubmit}>
+        <Form.Item
+          name="name"
+          label=""
+          required
+          rules={[
+            {
+              required: true,
+              message: "Name required",
+            },
+          ]}
+          >
+          <Input className="regform-input" placeholder="Name" />
+        </Form.Item>
+        <Form.Item
+          name="email"
+          required
+          rules={[
+            {
+              required: true,
+              message: "Email required",
+            },
+            { pattern: emailRegex, message: "Enter Valid Email" },
+          ]}
+          >
+          <Input placeholder="E-mail" className="regform-input" type="email" />
+        </Form.Item>
+        <Form.Item
+          name="codechefID"
+          required
+          rules={[
+            {
+              required: true,
+              message: "Code chef ID reqiured",
+            },
+          ]}
+          >
+          <Input placeholder="Codechef ID" className="regform-input" />
+        </Form.Item>
+        <Form.Item name="password"           rules={[
+            {
+              required: true,
+              message: "Password reqiured",
+            },
+          ]}>
+          <Input type="password" placeholder="Password" className="regform-input" />
+        </Form.Item>
+        <Form.Item name="confirm-password"           rules={[
+            {
+              required: true,
+              message: "Confirm Password reqiured",
+            },
+          ]}>
+          <Input type="password" placeholder="Confirm Password" className="regform-input" />
+        </Form.Item>
+        <Form.Item>
+          <button className="regform-submit" type="submit" disabled={loading}>
+            SUBMIT
+          </button>
+        </Form.Item>
+      </Form>
+          </div>
+    </div>
+    </div>
   );
 };
