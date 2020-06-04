@@ -37,8 +37,8 @@
 }
 .divider{
     border: none;
-    border-left: solid #ffffff 1.5px;
-    border-right: solid #ffffff 1.5px;
+    border-left: solid #ffffff 2.5px;
+    border-right: solid #ffffff 2.5px;
     height: 50vh;
 }
 
@@ -61,6 +61,7 @@
 
 .login-input{
     background-color: #1b262c;
+    color: #ffffff;
     width: 100%;
     border: 0;
     /* border-left: solid #03558b 5px; */
