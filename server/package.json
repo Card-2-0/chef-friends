@@ -33,7 +33,7 @@
     "jsonwebtoken": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "subscriptions-transport-ws": "^0.9.16",
-    "ts-loader": "^7.0.5",
+    "ts-loader": "^9.4.2",
     "ts-node-dev": "^1.0.0-pre.44",
     "type-graphql": "^1.0.0-rc.2"
   }
